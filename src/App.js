@@ -7,10 +7,9 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Contractor from "./components/Contractor";
-import Service from "./components/Service";
 import Services from "./containers/Services/Services";
-import ServiceDetails from "./components/ServiceDetails";
 import ServiceEdit from "./components/ServiceEdit";
+import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom'
 
 
 const dummyService = {
@@ -23,17 +22,21 @@ const dummyService = {
 function App() {
     return (
         <div className="App">
-            <Header classes={{label: 'header'}}/>
-            <body className={"container"}>
-            <ServiceEdit/>
-            <ServiceDetails name={dummyService.name} added={dummyService.added} phone={dummyService.phone} description={dummyService.description}/>
-            <Hero/>
-            <Services/>
-            <TopServices/>
-            <About/>
-            <Contact/>
-            <Contractor/>
-            </body>
+            <Router>
+                <Header classes={{label: 'header'}}/>
+                <div className={"container"}>
+                        <Route exact path="/" component={Hero}/>
+                        <Route exact path="/about" component={About}/>
+                        <Route exact path="/contact" component={Contact}/>
+                        <Route exact path="/contractor" component={Contractor}/>
+                        <Route exact path="/services" component={Hero}/>
+                        <Route exact path="/services" component={Services}/>
+                        <Route exact path="/serviceEdit" component={ServiceEdit}/>
+                </div>
+            </Router>
+            <div className={"container"}>
+                <TopServices/>
+            </div>
             <Footer/>
         </div>
     );
