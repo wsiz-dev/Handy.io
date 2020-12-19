@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import Input from "@material-ui/core/Input";
-import StyledButton from "../StyledButton";
+import BorderButton from "../StyledButton/BorderButton";
 import '../../style/style.css'
 
 
@@ -8,8 +8,10 @@ const Hero = () => {
     return (
         <div className="hero">
             <h1>Find a professional you can trust </h1>
-            <Input className={"input"} placeholder={"Type service name..."} color={"secondary"}/>
-            <StyledButton classes={{ label: 'search-button' }} color={"secondary"}>SEARCH FOR PROFESSIONALS</StyledButton>
+            <div className="search-input">
+                <Input placeholder={"Type service name..."} color={"secondary"}/>
+            </div>
+            <BorderButton classes={{ label: 'search-button' }} color={"secondary"}>SEARCH FOR PROFESSIONALS</BorderButton>
         </div>
     )
 }
