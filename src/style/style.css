@@ -1,0 +1,53 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.top-services {
+    margin-bottom: 10vh;
+}
+
+.info-button {
+    width: 26rem;
+    height: 16rem;
+    font-size: 1.6rem;
+}
+
+header {
+    box-shadow: 0.1vw 0.2vh 5vh gray;
+    border: gray solid 1px;
+    height: 5vh;
+    font-size: 1.5rem;
+    margin-bottom: 2vh;
+}
+
+.header-body {
+    margin: 1vh;
+}
+
+.hero {
+    margin: 10vh 0 20vh 0;
+}
+
+.input{
+    margin-right: 4vw;
+}
+
+h1 {
+    font-size: 6rem;
+    margin-bottom: 10vh;
+}
+
+footer {
+    color: gray;
+}
+
+.banner {
+    margin-bottom: 2vh;
+    font-size: 1.4rem;
+}
+.login-section{
+    display: inline-block;
+    margin-left: 20vw;
+}
