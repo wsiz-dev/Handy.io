@@ -105,6 +105,12 @@ footer {
     margin-top: -1vh;
 }
 
+.service-description{
+    margin-top: 2vh;
+    padding-bottom: 4vh;
+    margin-bottom: 10vh;
+}
+
 .service-info span {
     margin: 0 2vw 0 0;
 }
@@ -122,6 +128,16 @@ p.service-info + div {
 
 .service-details h1 {
     margin-bottom: 4vh;
+}
+
+.service-details h2 {
+    color: #f50057;
+    margin: 1% -0.6%;
+    font-size: 6vh;
+}
+
+.service h3 {
+    font-size: 2.5vh;
 }
 
 .description {

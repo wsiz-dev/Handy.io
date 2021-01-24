@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, {Component} from "react";
 import TopServices from "./components/TopServices";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -9,29 +9,46 @@ import Contact from "./components/Contact";
 import Contractor from "./components/Contractor";
 import Services from "./containers/Services/Services";
 import ServiceEdit from "./components/ServiceEdit";
-import {BrowserRouter as Router, Route, Switch, withRouter} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
+import Login from "./components/Login";
+import ServiceDetails from "./components/ServiceDetails";
+import history from "./helpers/history";
 
 
-const dummyService = {
-    name: "Service one",
-    added: "23.12.2020",
-    phone: "232 321 432",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus blanditiis consequatur debitis dicta eaque eligendi expedita facere inventore labore nihil non omnis, optio placeat sequi sint vitae. Magni, nisi!"
-}
+const PrivateRoute = ({component: Component, ...rest}) => (
+    <Route
+        {...rest}
+        render={props =>
+            sessionStorage.getItem("currentUser") ? (
+                <Component {...props}/>
+            ) : (
+                <Redirect
+                    to={{
+                        pathname: "login",
+                        state: {from: props.location}
+                    }}
+                />
+            )
+        }
+    />
+)
 
 function App() {
     return (
         <div className="App">
-            <Router>
+            <Router history={history}>
                 <Header classes={{label: 'header'}}/>
                 <div className={"container"}>
-                        <Route exact path="/" component={Hero}/>
-                        <Route exact path="/about" component={About}/>
-                        <Route exact path="/contact" component={Contact}/>
-                        <Route exact path="/contractor" component={Contractor}/>
-                        <Route exact path="/services" component={Hero}/>
-                        <Route exact path="/services" component={Services}/>
-                        <Route exact path="/serviceEdit" component={ServiceEdit}/>
+                    <Route exact path="/" component={Hero}/>
+                    <Route exact path="/about" component={About}/>
+                    <Route exact path="/contact" component={Contact}/>
+                    <PrivateRoute exact path="/contractor" component={Contractor}/>
+                    <Route exact path="/services" component={Hero}/>
+                    <Route exact path="/services" component={Services}/>
+                    <Route exact path="/topServices" component={TopServices}/>
+                    <Route exact path="/serviceEdit" component={ServiceEdit}/>
+                    <Route exact path="/service/:id" component={ServiceDetails}/>
+                    <Route exact path="/login" component={Login}/>
                 </div>
             </Router>
             <div className={"container"}>

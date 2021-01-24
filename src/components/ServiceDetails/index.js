@@ -1,17 +1,25 @@
 ﻿import React from "react";
+import useTopService from "../../hooks/useTopService";
+
 
 const ServiceDetails = (props) => {
-    return (
-        <div className={"service-details"}>
-            <h1>{props.name}</h1>
-            <div className={"service-info"}>
-                <p>Added: {props.added}</p>
-                <p>Phone Number: {props.phone}</p>
+    const {topService, loading} = useTopService(props.match.path);
+
+    return (loading
+            ? <div className={"service-details"}>
+                <h2>Loading...</h2>
             </div>
-            <div>
-                {props.description}
+            : <div className={"service-details"}>
+                <h2>{topService.owner}</h2>
+                <h3>{topService.name}</h3>
+                <div className={"service-info"}>
+                    <span>Added: {topService.added}</span><span>Phone Number: {topService.phoneNumber}</span>
+                    <p className={"service-description"}>{topService.description}</p>
+                </div>
+                <div>
+                    {props.description}
+                </div>
             </div>
-        </div>
     )
 }
 
