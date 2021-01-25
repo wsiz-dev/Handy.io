@@ -31,6 +31,22 @@ namespace Handy.io.Controllers
             
             return Ok(result);
         }
+        
+        /// <summary>
+        /// Get top services
+        /// </summary>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        [HttpGet("top-services/{quantity}")]
+        public IActionResult GetTopServices(int quantity)
+        {
+            var result = _repository
+                .GetTop(quantity)
+                .Select(x => new ServiceSearchByPhraseResult(x))
+                .ToList();
+            
+            return Ok(result);
+        }
 
         /// <summary>
         /// Get service by ID

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Handy.io.Models;
 using MongoDB.Driver;
 
@@ -21,6 +23,17 @@ namespace Handy.io.Repositories
             return _services
                 .Find(x => x.Name.ToLower().Contains(phrase.ToLower()) ||
                            x.Description.ToLower().Contains(phrase.ToLower()))
+                .ToList();
+        }
+
+        public IEnumerable<Service> GetTop(int quantity)
+        {
+            var random = new Random();
+            return _services
+                .Find(x => true)
+                .ToList()
+                .OrderBy(x => random.Next())
+                .Take(quantity)
                 .ToList();
         }
 
