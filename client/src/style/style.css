@@ -1,0 +1,154 @@
+﻿﻿body {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+.container {
+    width: 1920px;
+    margin: auto;
+}
+
+.top-services {
+    margin-bottom: 10vh;
+}
+
+.content {
+    text-align: justify;
+}
+
+.info-button {
+    width: 26rem;
+    height: 16rem;
+    font-size: 1.6rem;
+    box-shadow: 0.2vw 1vh 1vh rgba(128, 128, 128, 0.8);
+    margin: 0 0 0 2vw !important;
+}
+
+.service {
+    border-radius: 10px;
+    border-top: solid 2px #f50057;
+    border-left: solid 2px #f50057;
+    box-shadow: 0.2vw 1vh 1vh rgba(128, 128, 128, 0.8);
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+header {
+    box-shadow: 0.1vw 0.2vh 5vh rgba(128, 128, 128, 0.8);
+    border: gray solid 1px;
+    height: 5vh;
+    font-size: 1.5rem;
+    margin-bottom: 2vh;
+}
+
+.header-body {
+    margin: 1vh;
+}
+
+.hero {
+    margin: 10vh 0 10vh 0;
+}
+
+.input {
+    margin-right: 4vw;
+}
+
+h1 {
+    font-size: 6rem;
+    margin-bottom: 10vh;
+}
+
+
+footer {
+    color: gray;
+}
+
+.banner {
+    margin-bottom: 4vh;
+    font-size: 2rem;
+}
+
+.login-section {
+    display: inline-block;
+    margin-left: 20vw;
+}
+
+.border-button {
+    border: solid 10px;
+}
+
+.search-button {
+    padding: 2vh;
+}
+
+.search-input {
+    margin-bottom: 2vh;
+}
+
+.service {
+    padding: 0 2vw;
+    text-align: left;
+    margin-top: 4vh;
+}
+
+.service-details {
+    padding: 0 2vw;
+    text-align: left;
+    margin-top: 4vh;
+}
+
+.service-info {
+    font-size: 1rem;
+    margin-top: -1vh;
+}
+
+.service-description{
+    margin-top: 2vh;
+    padding-bottom: 4vh;
+    margin-bottom: 10vh;
+}
+
+.service-info span {
+    margin: 0 2vw 0 0;
+}
+
+p.service-info + div {
+    padding-bottom: 2vh;
+}
+
+.service:hover {
+    background: #f50057;
+    color: white;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.service-details h1 {
+    margin-bottom: 4vh;
+}
+
+.service-details h2 {
+    color: #f50057;
+    margin: 1% -0.6%;
+    font-size: 6vh;
+}
+
+.service h3 {
+    font-size: 2.5vh;
+}
+
+.description {
+    min-width: 50vw;
+}
+
+.text-left {
+    text-align: left;
+    padding: 0 0 0 2vw;
+}
+
+.edit-button {
+    margin: 2vh 2vh 2vh 0 !important;
+}
