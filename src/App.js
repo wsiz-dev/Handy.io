@@ -45,6 +45,8 @@ function App() {
                     <PrivateRoute exact path="/contractor" component={Contractor}/>
                     <Route exact path="/services" component={Hero}/>
                     <Route exact path="/services" component={Services}/>
+                    <Route exact path="/services/:phrase" component={Hero}/>
+                    <Route exact path="/services/:phrase" component={Services}/>
                     <Route exact path="/topServices" component={TopServices}/>
                     <Route exact path="/serviceEdit" component={ServiceEdit}/>
                     <Route exact path="/service/:id" component={ServiceDetails}/>

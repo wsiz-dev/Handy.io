@@ -1,22 +1,7 @@
 ﻿import React from "react";
 import Service from "../../components/Service";
 import history from "../../helpers/history";
-
-const services = [
-    {
-        name: "Service one",
-        added: "23.12.2020",
-        phone: "232 321 432",
-        id: 1,
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus blanditiis consequatur debitis dicta eaque eligendi expedita facere inventore labore nihil non omnis, optio placeat sequi sint vitae. Magni, nisi!"
-    },
-    {
-        name: "Service one",
-        added: "23.12.2020",
-        phone: "232 321 432",
-        id: 2,
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus blanditiis consequatur debitis dicta eaque eligendi expedita facere inventore labore nihil non omnis, optio placeat sequi sint vitae. Magni, nisi!"
-    }]
+import useServices from "../../hooks/useServices";
 
 const routeChange = (id) => {
     let path = "/service/" + id;
@@ -25,13 +10,17 @@ const routeChange = (id) => {
     window.location.reload(false);
 }
 
-const Services = () => {
-    return (
-        <div>
+const Services = (props) => {
+    const {services, loading} = useServices(props.match.url);
+    console.log(props.match.url)
+
+    return ( loading
+        ? <Service name={"Loading..."}/>
+        : <div>
             {services.map(service =>
                 <Service name={service.name}
                          added={service.added}
-                         phone={service.phone}
+                         phone={service.phoneNumber}
                          description={service.description}
                          onClick={() => routeChange(service.id)}/>)}
         </div>

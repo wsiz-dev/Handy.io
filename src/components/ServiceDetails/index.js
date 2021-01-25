@@ -3,7 +3,7 @@ import useTopService from "../../hooks/useTopService";
 
 
 const ServiceDetails = (props) => {
-    const {topService, loading} = useTopService(props.match.path);
+    const {topService, loading} = useTopService(props.match.url);
 
     return (loading
             ? <div className={"service-details"}>
@@ -15,9 +15,6 @@ const ServiceDetails = (props) => {
                 <div className={"service-info"}>
                     <span>Added: {topService.added}</span><span>Phone Number: {topService.phoneNumber}</span>
                     <p className={"service-description"}>{topService.description}</p>
-                </div>
-                <div>
-                    {props.description}
                 </div>
             </div>
     )
