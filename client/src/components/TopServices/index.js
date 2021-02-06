@@ -30,13 +30,18 @@ const TopServices = () => {
                 }
             </div>
             : <div className="top-services">
-                <h2 color={"gray"} className="banner">Top services</h2>
+                <h2>Top services</h2>
+                <div class="top-services__wrapper">
                     {
                         topServices.map(service =>
-                            <StyledButton className={"info-button"} color={"secondary"} onClick={() => routeChange(service.id)}>
-                                <div>{service.owner}<p>{service.name}</p></div>
-                            </StyledButton>)
+                            <button onClick={() => routeChange(service.id)}>
+                                <div>
+                                <span className="owner">{service.owner}</span>
+                                <span className="name">{service.name}</span>
+                                </div>
+                            </button>)
                     }
+                </div>
             </div>
     )
 }

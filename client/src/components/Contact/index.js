@@ -2,7 +2,7 @@
 
 const Contact = () => {
     return (
-        <div>
+        <div className="page">
             <h2>Contact us</h2>
             <article className={"content"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium debitis deleniti dolorem
                 eveniet illum quos voluptatum? Consequatur enim eum excepturi itaque minima. Adipisci dolore eligendi

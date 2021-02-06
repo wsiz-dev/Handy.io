@@ -1,4 +1,5 @@
 import './App.css';
+import './style/style.scss';
 import React, {Component} from "react";
 import TopServices from "./components/TopServices";
 import Header from "./components/Header";

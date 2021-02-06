@@ -20,11 +20,13 @@ const Hero = () => {
 
     return (
         <div className="hero">
-            <h1>Find a professional you can trust </h1>
-            <div className="search-input">
-                <Input placeholder={"Type service name..."} color={"secondary"}  onChange={onInputChange}/>
+            <h1>Find a <u>professional</u> you can <u>trust</u></h1>
+            <div className="search-form">
+                <div className="search-input">
+                    <Input placeholder={"Type service name..."}  onChange={onInputChange}/>
+                </div>
+                <button className="search-button btn btn--primary btn--lg" onClick={(() => routeChange(phrase))}>SEARCH FOR PROFESSIONALS</button>
             </div>
-            <BorderButton classes={{ label: 'search-button' }} color={"secondary"} onClick={(() => routeChange(phrase))}>SEARCH FOR PROFESSIONALS</BorderButton>
         </div>
     )
 }

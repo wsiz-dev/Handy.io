@@ -1,6 +1,7 @@
 ﻿﻿import {Redirect, useLocation} from 'react-router-dom';
 import BorderButton from "../StyledButton/BorderButton";
 import React, {useState} from "react";
+import icon from '../../fb-icon.svg';
 
 const currentUser = "currentUser"
 
@@ -24,9 +25,14 @@ const Login = () => {
         })
     }
 
-    return (<div>
-        <p>Plese login</p>
-        <BorderButton onClick={fbLogin}>Facebook login</BorderButton>
+    return (<div className="login page">
+        <h2>
+            Sign in
+        </h2>
+        <p>We take security issues seriously, which is why our platform uses only fully secured authentication methods.</p>
+        <button onClick={fbLogin}>
+            <img src={icon} width="24"/> 
+            <span><span>Sign in with</span> <b>Facebook</b></span></button>
         {isLogged && <Redirect to={path}/>}
     </div>)
 }

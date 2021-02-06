@@ -6,8 +6,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 const StyledLink = withStyles({
     root: {
-        width: '16rem',
-        margin: '0 3vw',
+        // width: '16rem',
+        // margin: '0 3vw',
     },
 })(Link);
 
@@ -19,10 +19,10 @@ const Logout = () => {
     }
 
     return (
-        <BorderButton color={"secondary"} onClick={fbLogout}>
-            <StyledLink>Logout</StyledLink>
+        <button className="btn btn--default" onClick={fbLogout}>
+            Logout
             {!isLogged && <Redirect to='/'/>}
-        </BorderButton>
+        </button>
     )
 }
 
