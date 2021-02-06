@@ -20,9 +20,6 @@ const EditService = (props) => {
                     initialValues={{...service}}
                     validate={values => {
                         const errors = {};
-                        if (!values.owner) {
-                            errors.owner = 'Required';
-                        }
                         if (!values.name) {
                             errors.name = 'Required';
                         }
@@ -49,17 +46,6 @@ const EditService = (props) => {
                           /* and other goodies */
                       }) => (
                         <form onSubmit={handleSubmit}>
-                            <div>{error}</div>
-                            <label> Owner:
-                                <div>{errors.owner}</div>
-                                <input
-                                    type="text"
-                                    name="owner"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.owner}
-                                />
-                            </label>
                             <label> Service type:
                                 <div>{errors.name}</div>
                                 <input
