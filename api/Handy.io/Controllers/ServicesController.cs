@@ -15,7 +15,22 @@ namespace Handy.io.Controllers
         {
             _repository = repository;
         }
-        
+
+        /// <summary>
+        /// Get all services
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("all")]
+        public IActionResult GetAll(string phrase)
+        {
+            var result = _repository
+                .GetAll()
+                .Select(x => new ServiceSearchByPhraseResult(x))
+                .ToList();
+
+            return Ok(result);
+        }
+
         /// <summary>
         /// Get services by name or description
         /// </summary>
@@ -28,10 +43,10 @@ namespace Handy.io.Controllers
                 .GetByPhrase(phrase)
                 .Select(x => new ServiceSearchByPhraseResult(x))
                 .ToList();
-            
+
             return Ok(result);
         }
-        
+
         /// <summary>
         /// Get top services
         /// </summary>
@@ -44,7 +59,7 @@ namespace Handy.io.Controllers
                 .GetTop(quantity)
                 .Select(x => new ServiceSearchByPhraseResult(x))
                 .ToList();
-            
+
             return Ok(result);
         }
 
@@ -61,7 +76,7 @@ namespace Handy.io.Controllers
             {
                 return NotFound();
             }
-            
+
             return Ok(new ServiceGetByIdResult(result));
         }
 
@@ -71,7 +86,7 @@ namespace Handy.io.Controllers
         /// <param name="ownerId"></param>
         /// <returns></returns>
         [HttpGet("owners/{ownerId}")]
-        public IActionResult GetByOwnerId(int ownerId)
+        public IActionResult GetByOwnerId(long ownerId)
         {
             var result = _repository
                 .GetByOwnerId(ownerId)
@@ -89,9 +104,7 @@ namespace Handy.io.Controllers
         ///
         ///     POST /services
         ///     {
-        ///        "id": 1,
         ///        "name": "panele",
-        ///        "added": "jan kowalski",
         ///        "ownerId": 1,
         ///        "owner": "paweł nowak",
         ///        "phoneNumber": "123-456-789",
@@ -101,10 +114,36 @@ namespace Handy.io.Controllers
         /// </remarks>
         /// <param name="service"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost("addService")]
         public IActionResult Create([FromBody] CreateServiceModel service)
         {
-            _repository.Create(service.ToDomainModel());
+            var item = service.ToDomainModel();
+            _repository.Create(item);
+            return Ok(item.ServiceId);
+        }
+
+        /// <summary>
+        /// Add new service
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /services
+        ///     {
+        ///        "name": "panele",
+        ///        "ownerId": 1,
+        ///        "owner": "paweł nowak",
+        ///        "phoneNumber": "123-456-789",
+        ///        "description": "no panele jak to panele"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="service"></param>
+        /// <returns>Service ID</returns>
+        [HttpPost("updateService")]
+        public IActionResult Update([FromBody] CreateServiceModel service)
+        {
+            //TODO: Add Implementation -> return updated service ID
             return Ok();
         }
 

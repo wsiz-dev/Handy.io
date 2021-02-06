@@ -16,7 +16,7 @@
         public int Id { get; }
         public string Name { get; }
         public string Added { get; }
-        public int OwnerId { get; }
+        public long OwnerId { get; }
         public string Owner { get; }
         public string PhoneNumber { get; }
         public string Description { get; }

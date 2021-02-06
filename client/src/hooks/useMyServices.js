@@ -5,11 +5,12 @@ import {apiUrl} from "../consts/urls";
 const ok = (services) => ({status: "ok", services: services})
 const error = (error) => ({status: "error", error: error})
 
-const getServices = async (phrase) => {
+const getServices = async (userId) => {
     try {
+
         let url = apiUrl + "/all"
-        if(phrase){
-            url = apiUrl + phrase;
+        if(userId){
+            url = apiUrl + "/owners/" + userId.id;
         }
         let result = await fetch(url)
         const services = result.status === 200 && await result.json()
@@ -22,7 +23,7 @@ const getServices = async (phrase) => {
     }
 }
 
-const useServices = (phrase) => {
+const useMyServices = () => {
     const [services, setServices] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(undefined)
@@ -37,9 +38,11 @@ const useServices = (phrase) => {
         setServices(dummyServices)
 
     }
+
+    let userId =  JSON.parse(sessionStorage.getItem("currentUser"))
     const fetchData = async () => {
         setLoading(true);
-        const result = await getServices(phrase);
+        const result = await getServices(userId);
         switch (result.status) {
             case "ok":
                 setServices(result.services)
@@ -61,4 +64,4 @@ const useServices = (phrase) => {
     }
 }
 
-export default useServices
+export default useMyServices

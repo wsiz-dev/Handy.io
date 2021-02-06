@@ -15,6 +15,7 @@ import Login from "./components/Login";
 import ServiceDetails from "./components/ServiceDetails";
 import AddService from "./components/AddService";
 import EditService from "./components/EditService";
+import MyServices from "./containers/MyServices/MyServices";
 import history from "./helpers/history";
 
 
@@ -22,11 +23,9 @@ const PrivateRoute = ({component: Component, ...rest}) => (
     <Route
         {...rest}
         render={props =>
-            sessionStorage.getItem("currentUser") ? (
-                <Component {...props}/>
-            ) : (
-                <Redirect
-                    to={{
+            sessionStorage.getItem("currentUser") !== undefined
+                ? (<Component {...props}/>)
+                : (<Redirect to={{
                         pathname: "login",
                         state: {from: props.location}
                     }}
@@ -45,13 +44,15 @@ function App() {
                     <Route exact path="/" component={Hero}/>
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/contact" component={Contact}/>
-                    <PrivateRoute exact path="/contractor" component={Contractor}/>
+                    <Route exact path="/contractor" component={Contractor}/>
                     <PrivateRoute exact path="/addService" component={AddService}/>
                     <PrivateRoute exact path="/editService/:id" component={EditService}/>
+                    <PrivateRoute exact path="/myServices" component={Hero}/>
+                    <PrivateRoute exact path="/myServices" component={MyServices}/>
                     <Route exact path="/services" component={Hero}/>
                     <Route exact path="/services" component={Services}/>
-                    <Route exact path="/services/:phrase" component={Hero}/>
-                    <Route exact path="/services/:phrase" component={Services}/>
+                    <Route exact path="/services/search/:phrase" component={Hero}/>
+                    <Route exact path="/services/search/:phrase" component={Services}/>
                     <Route exact path="/topServices" component={TopServices}/>
                     <Route exact path="/serviceEdit" component={ServiceEdit}/>
                     <Route exact path="/service/:id" component={ServiceDetails}/>

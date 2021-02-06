@@ -8,6 +8,7 @@
             Name = service.Name;
             Added = service.Added;
             Owner = service.Owner;
+            OwnerId = service.OwnerId;
             PhoneNumber = service.PhoneNumber;
             Description = service.Description;
         }
@@ -16,6 +17,7 @@
         public string Name { get; }
         public string Added { get; }
         public string Owner { get; }
+        public long OwnerId { get; }
         public string PhoneNumber { get; }
         public string Description { get; }
     }

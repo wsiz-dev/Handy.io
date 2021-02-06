@@ -2,7 +2,7 @@
 {
     public class Service
     {
-        public Service(int serviceId, string name, string added, int ownerId, string owner, string phoneNumber, string description)
+        public Service(int serviceId, string name, string added, long ownerId, string owner, string phoneNumber, string description)
         {
             ServiceId = serviceId;
             Name = name;
@@ -16,7 +16,7 @@
         public int ServiceId { get; }
         public string Name { get; }
         public string Added { get; }
-        public int OwnerId { get; }
+        public long OwnerId { get; }
         public string Owner { get; }
         public string PhoneNumber { get; }
         public string Description { get; }

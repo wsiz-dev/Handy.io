@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import Service from "../../components/Service";
 import history from "../../helpers/history";
-import useServices from "../../hooks/useServices";
+import useMyServices from "../../hooks/useMyServices";
 import {servicesUrl} from "../../consts/urls";
 
 const routeChange = (id) => {
@@ -10,8 +10,8 @@ const routeChange = (id) => {
     window.location.reload(false);
 }
 
-const Services = (props) => {
-    const {services, loading} = useServices(props.match.url.replace(servicesUrl, ""));
+const MyServices = (props) => {
+    const {services, loading} = useMyServices(props.match.url.replace(servicesUrl, ""));
 
     return ( loading
         ? <Service name={"Loading..."}/>
@@ -26,4 +26,4 @@ const Services = (props) => {
     )
 }
 
-export default Services
+export default MyServices

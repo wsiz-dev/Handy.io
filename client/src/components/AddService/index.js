@@ -1,12 +1,13 @@
 ﻿import React from "react";
-import { Formik } from 'formik';
+import {Formik} from 'formik';
 import useAddService from "../../hooks/useAddService";
 import {addServiceUrl} from "../../consts/urls";
 import {Link as RouterLink} from 'react-router-dom'
 
 
 const AddService = (props) => {
-    const {addService, loading, error} = useAddService(addServiceUrl);
+    const {addService, loading, error, body} = useAddService(addServiceUrl);
+
 
     return (loading
             ? <div className={"service-details"}>
@@ -15,7 +16,9 @@ const AddService = (props) => {
             : <div className={"service-details"}>
                 <RouterLink class="btn btn--link" to="/services"> &larr; Back to services</RouterLink>
                 <Formik
-                    initialValues={{ owner: '', name: '', phoneNumber: '', description: '' }}
+                    initialValues={body === undefined
+                        ? {owner: '', name: '', phoneNumber: '', description: ''}
+                        : body }
                     validate={values => {
                         const errors = {};
                         if (!values.owner) {
@@ -32,8 +35,8 @@ const AddService = (props) => {
                         }
                         return errors;
                     }}
-                    onSubmit={(values, { setSubmitting }) => {
-                       let result = addService(values)
+                    onSubmit={(values, {setSubmitting}) => {
+                        let result = addService(values)
                     }}
                 >
                     {({

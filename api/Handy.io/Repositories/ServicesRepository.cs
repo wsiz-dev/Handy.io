@@ -9,7 +9,7 @@ namespace Handy.io.Repositories
     internal class ServicesRepository : IServicesRepository
     {
         private readonly IMongoCollection<Service> _services;
-        
+
         public ServicesRepository(MongoSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
@@ -17,7 +17,13 @@ namespace Handy.io.Repositories
 
             _services = database.GetCollection<Service>(settings.ServicesCollectionName);
         }
-        
+
+        public IEnumerable<Service> GetAll()
+        {
+            return _services.Find(_ => true)
+                .ToList();
+        }
+
         public IEnumerable<Service> GetByPhrase(string phrase)
         {
             return _services
@@ -44,7 +50,7 @@ namespace Handy.io.Repositories
                 .SingleOrDefault();
         }
 
-        public IEnumerable<Service> GetByOwnerId(int ownerId)
+        public IEnumerable<Service> GetByOwnerId(long ownerId)
         {
             return _services
                 .Find(x => x.OwnerId == ownerId)

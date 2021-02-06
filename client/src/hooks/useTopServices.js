@@ -1,5 +1,5 @@
 ﻿import React, {useEffect, useState} from "react";
-import {topServicesUrl} from "../consts/urls";
+import {topServicesUrl, apiUrl} from "../consts/urls";
 
 const ok = (services) => ({status: "ok", services: services})
 const error = (error) => ({status: "error", error: error})
@@ -10,7 +10,8 @@ const getTopServices = async () => {
         return ok(JSON.parse(localServices));
     }
     try {
-        let result = await fetch(topServicesUrl)
+        let url = apiUrl + topServicesUrl + '/4';
+        let result = await fetch(url)
         const remoteServices = result.status === 200 && await result.json()
         remoteServices && localStorage.setItem("topServices", JSON.stringify(remoteServices));
         return remoteServices

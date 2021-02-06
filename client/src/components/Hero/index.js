@@ -13,7 +13,7 @@ const Hero = () => {
     }
 
     const routeChange = (phrase) => {
-        let path = "/services/" + phrase
+        let path = "/services/search/" + phrase
         history.push(path);
         window.location.reload(false);
     }

@@ -16,7 +16,6 @@ const StyledLink = withStyles({
 
 const Header = () => {
     const [isLogged, setLogged] = useState(false);
-
     useEffect(() => {
         let user = sessionStorage.getItem("currentUser")
         setLogged(user !== "undefined");
@@ -31,6 +30,7 @@ const Header = () => {
                     <StyledLink component={RouterLink} to="/contact">Contact Us</StyledLink>
                 </div>
                 <div className={"login-section header__right"}>
+                    {isLogged && <StyledLink component={RouterLink} className="btn btn--default" to="/myServices">MyServices</StyledLink>}
                     {isLogged && <StyledLink component={RouterLink} className="btn btn--default" to="/addService">Add Service</StyledLink>}
                     <StyledLink component={RouterLink} to="/contractor"><u>Become a contractor</u></StyledLink>
                     {isLogged && <Logout/>}
