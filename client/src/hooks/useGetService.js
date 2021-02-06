@@ -1,4 +1,4 @@
-﻿﻿import React, {useEffect, useState} from "react";
+﻿import React, {useEffect, useState} from "react";
 
 const ok = (services) => ({status: "ok", services: services})
 const error = (error) => ({status: "error", error: error})
@@ -25,9 +25,8 @@ const getTopService = async (url) => {
     }
 }
 
-const useTopService = (url) => {
-    console.log(url)
-    const [topService, setTopService] = useState(dummyService)
+const useGetService = (url) => {
+    const [service, setTopService] = useState(dummyService)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(undefined)
     const setDummyService = () => {
@@ -52,8 +51,8 @@ const useTopService = (url) => {
     }, []);
 
     return {
-        topService, loading, error
+        service: service, loading, error
     }
 }
 
-export default useTopService
+export default useGetService

@@ -1,4 +1,4 @@
-﻿﻿import React, {useEffect, useState} from "react";
+﻿import React, {useEffect, useState} from "react";
 import {servicesUrl} from "../consts/urls";
 
 const ok = (services) => ({status: "ok", services: services})

@@ -13,6 +13,8 @@ import ServiceEdit from "./components/ServiceEdit";
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import Login from "./components/Login";
 import ServiceDetails from "./components/ServiceDetails";
+import AddService from "./components/AddService";
+import EditService from "./components/EditService";
 import history from "./helpers/history";
 
 
@@ -44,6 +46,8 @@ function App() {
                     <Route exact path="/about" component={About}/>
                     <Route exact path="/contact" component={Contact}/>
                     <PrivateRoute exact path="/contractor" component={Contractor}/>
+                    <PrivateRoute exact path="/addService" component={AddService}/>
+                    <PrivateRoute exact path="/editService/:id" component={EditService}/>
                     <Route exact path="/services" component={Hero}/>
                     <Route exact path="/services" component={Services}/>
                     <Route exact path="/services/:phrase" component={Hero}/>
