@@ -43,8 +43,8 @@ const useGetService = (url) => {
                 case "ok":
                     let user = await sessionStorage.getItem("currentUser");
                     let isOwner = false;
-                       if(user == undefined){
-                           isOwner = JSON.parse(user.id) == result.services.ownerId;
+                       if(user !== undefined){
+                           isOwner = JSON.parse(user).id == result.services.ownerId;
                        }
                     setTopService(result.services)
                     setIsOwner(isOwner);
