@@ -10,10 +10,10 @@ const AddService = (props) => {
 
 
     return (loading
-            ? <div className={"service-details"}>
+            ? <div className={"service-details form-page"}>
                 <h2>Loading...</h2>
             </div>
-            : <div className={"service-details"}>
+            : <div className={"service-details form-page"}>
                 <RouterLink class="btn btn--link" to="/services"> &larr; Back to services</RouterLink>
                 <Formik
                     initialValues={body === undefined
@@ -47,8 +47,9 @@ const AddService = (props) => {
                           /* and other goodies */
                       }) => (
                         <form onSubmit={handleSubmit}>
-                            <label> Service type:
-                                <div>{errors.name}</div>
+                            <h2>Add new service</h2>
+                            <div class="form-group">
+                                <label><span className="red">*</span>Service type</label>
                                 <input
                                     type="text"
                                     name="name"
@@ -56,9 +57,11 @@ const AddService = (props) => {
                                     onBlur={handleBlur}
                                     value={values.name}
                                 />
-                            </label>
-                            <label> Phone number:
-                                <div>{errors.phoneNumber}</div>
+                                <div className="error">{errors.name}</div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label><span className="red">*</span>Phone number</label>
                                 <input
                                     type="text"
                                     name="phoneNumber"
@@ -66,19 +69,23 @@ const AddService = (props) => {
                                     onBlur={handleBlur}
                                     value={values.phoneNumber}
                                 />
-                            </label>
-                            <label> Description:
-                                <div>{errors.description}</div>
-                                <textarea
-                                    name="description"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.description}
-                                />
-                            </label>
-                            <button type="submit" disabled={isSubmitting}>
-                                Submit
-                            </button>
+                                <div className="error">{errors.phoneNumber}</div>
+                            </div>
+                            <div class="form-group">
+                                <label><span className="red">*</span>Description</label>
+                                    <textarea
+                                        name="description"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.description}
+                                    />
+                                    <div className="error">{errors.description}</div>
+                                </div>
+                            <div>
+                                <button type="submit" className="btn btn--secondary" disabled={isSubmitting}>
+                                    Submit
+                                </button>
+                            </div>
                         </form>
                     )}
                 </Formik>

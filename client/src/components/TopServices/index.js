@@ -25,13 +25,15 @@ const TopServices = () => {
         loading
             ? <div className="top-services">
                 <h2 color={"gray"} className="banner">Top services</h2>
+                <div className="top-services__wrapper">
                 {
                     getLoadingItems()
                 }
+                </div>
             </div>
             : <div className="top-services">
                 <h2>Top services</h2>
-                <div class="top-services__wrapper">
+                <div className="top-services__wrapper">
                     {
                         topServices.map(service =>
                             <button onClick={() => routeChange(service.id)}>
