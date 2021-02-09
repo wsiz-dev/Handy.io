@@ -1,4 +1,4 @@
-﻿export const apiUrl = "https://localhost:5001/services"
+﻿export const apiUrl = "http://l212.115.110.219:5000/services"
 export const topServicesUrl = "/top-services"
 export const serviceUrl = "/service/"
 export const servicesUrl = "/services"
